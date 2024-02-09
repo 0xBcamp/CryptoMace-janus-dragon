@@ -1,4 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import {
   Dialog,
   DialogClose,
@@ -32,8 +35,11 @@ export function GameDialog({
   prizePool,
   imageUrl,
 }: GameDialogProp) {
-  async function handleSubmit() {
-    console.log("Submit to Blockchain");
+
+  const [input, setInput] = useState('');
+
+  async function handleSubmit(amount: string) {
+    console.log(`Submit ${amount} FTM to the Blockchain`);
   }
 
   return (
@@ -77,6 +83,8 @@ export function GameDialog({
             <div className="flex flex-col w-full items-center justify-center space-y-2 p-4">
               <h3 className="text-2xl font-bold">RATE THIS PICTURE</h3>
               <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
                 className="w-24 h-12 text-center text-lg"
                 placeholder="69"
               />
@@ -88,7 +96,7 @@ export function GameDialog({
                 <span className="font-bold text-green-900"> {cost}</span> FTM
               </h2>
             </div>
-            <Button variant="secondary" className="w-full">
+            <Button variant="secondary" className="w-full" onClick={() => handleSubmit(input)}>
               Submit Rating
             </Button>
           </div>

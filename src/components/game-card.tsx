@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -8,10 +10,7 @@ import {
 } from "@/components/ui/card";
 
 import Image, { StaticImageData } from "next/image";
-import pic from "../../public/profile.png";
-import { Button } from "./ui/button";
 import { GameDialog } from "./game-dialog";
-import { Half2Icon } from "@radix-ui/react-icons";
 
 export interface GameCardProp {
   id: number;
@@ -38,6 +37,8 @@ const GameCard = ({
   width,
   height,
 }: GameCardProp) => {
+  const endDate = new Date(expireTimestamp * 1000).toLocaleDateString();
+
   return (
     <Card className="flex flex-col items-center justify-between bg-card/90 border-accent">
       <CardHeader className="flex flex-col items-center justify-center bg-primary text-white w-full rounded-t-xl">
@@ -80,9 +81,7 @@ const GameCard = ({
         </div>
         <div className="flex flex-col items-center justify-center">
           <h3 className="text-md font-bold">Game Ends</h3>
-          <h2 className="text-xl font-semibold">
-            {createTimestamp}hr{expireTimestamp}mins
-          </h2>
+          <h2 className="text-xl font-semibold">{endDate}</h2>
         </div>
       </CardFooter>
     </Card>

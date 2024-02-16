@@ -1,86 +1,101 @@
 "use client";
 
-import * as React from "react";
+import { rainbowkitUseMoonConnector } from "@moonup/moon-rainbowkit";
+
+import { AUTH, MOON_SESSION_KEY, Storage } from "@moonup/moon-types";
 import {
   RainbowKitProvider,
-  getDefaultWallets,
   connectorsForWallets,
+  getDefaultWallets,
 } from "@rainbow-me/rainbowkit";
-import {
-  argentWallet,
-  trustWallet,
-  ledgerWallet,
-} from "@rainbow-me/rainbowkit/wallets";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
+import "@rainbow-me/rainbowkit/styles.css";
+
+import { useEffect, useState } from "react";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import {
   arbitrum,
   base,
+  fantom,
+  fantomSonicTestnet,
   fantomTestnet,
+  goerli,
   mainnet,
   optimism,
   polygon,
-  sepolia,
   zora,
 } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
-    fantomTestnet,
-    zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
-  ],
-  [publicProvider()]
-);
+function Providers({ children }: { children: React.ReactNode }) {
+  const [isMounted, setIsMounted] = useState(false);
+  const [wagmiConfig, setWagmiConfig] = useState<any | null>(null);
+  const [chains, setChains] = useState<any | null>(null);
 
-const projectId = "55b2c816bb3b5664940f20724cdde304";
+  useEffect(() => {
+    setIsMounted(true);
+    const { chains, publicClient, webSocketPublicClient } = configureChains(
+      [
+        fantom,
+        fantomTestnet,
+        fantomSonicTestnet,
+        ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
+          ? [fantomTestnet]
+          : []),
+      ],
+      [publicProvider()]
+    );
+    setChains(chains);
 
-const { wallets } = getDefaultWallets({
-  appName: "R8R Picture Rating Game",
-  projectId,
-  chains,
-});
+    const { wallets } = getDefaultWallets({
+      appName: "RainbowKit App",
+      projectId: "YOUR_PROJECT_ID",
+      chains,
+    });
 
-const demoAppInfo = {
-  appName: "R8R Picture Rating Game",
-};
+    const connectors = connectorsForWallets([
+      ...wallets,
+      {
+        groupName: "Other",
+        wallets: [
+          rainbowkitUseMoonConnector({
+            chains: chains,
+            options: {
+              chainId: 1,
+              MoonSDKConfig: {
+                Storage: {
+                  key: MOON_SESSION_KEY,
+                  type: Storage.SESSION,
+                },
+                Auth: {
+                  AuthType: AUTH.JWT,
+                },
+              },
+            },
+          }),
+        ],
+      },
+    ]);
 
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: "Other",
-    wallets: [
-      argentWallet({ projectId, chains }),
-      trustWallet({ projectId, chains }),
-      ledgerWallet({ projectId, chains }),
-    ],
-  },
-]);
+    setWagmiConfig(
+      createConfig({
+        autoConnect: true,
+        connectors,
+        publicClient,
+        webSocketPublicClient,
+      })
+    );
+    // setWagmiConfig(wagmiConfig);
+  }, []);
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-});
+  if (!isMounted) {
+    return null; // or return a placeholder if you want to show something during loading
+  }
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
-        appInfo={demoAppInfo}
-        modalSize="compact"
-      >
-        {mounted && children}
-      </RainbowKitProvider>
+      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
     </WagmiConfig>
   );
 }
+
+export default Providers;

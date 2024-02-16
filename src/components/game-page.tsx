@@ -1,8 +1,11 @@
 import GameCard from "./game-card";
 import { GameCarousal } from "./game-carousal";
 import six from "../../public/ai generated/6.png";
+import { main } from "@/api/s3";
+import LoginButton from "./login-button";
 
 const GamePage = () => {
+  main();
   {
     return (
       <div className="flex flex-col items-center justify-start">
@@ -10,6 +13,7 @@ const GamePage = () => {
           <h1 className="text-2xl text-primary-foreground uppercase">
             Featured Game
           </h1>
+          <LoginButton />
           <GameCard
             id={8}
             status={true}

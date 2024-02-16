@@ -42,18 +42,14 @@ const GameCard = ({
     <Card className="flex flex-col items-center justify-between bg-card/90 border-accent">
       <CardHeader className="flex flex-col items-center justify-center bg-primary text-white w-full rounded-t-xl">
         <CardTitle>Game #{id}</CardTitle>
-        <CardDescription className="grid grid-cols-2 items-center justify-center mt-4 space-x-4">
-          <h3 className="flex flex-col items-center justify-center">
-            Status{" "}
-            {status === true ? (
-              <p className="text-green-500">ACTIVE</p>
-            ) : (
-              <p className="text-red-500">EXPIRED</p>
-            )}
-          </h3>
-          <h3 className="flex flex-col items-center justify-center">
-            Entry Fee <br /> <span className="font-bold">{cost} FTM</span>
-          </h3>
+        <CardDescription className="grid grid-cols-4 items-center justify-center mt-4 space-x-4">
+          Status{" "}
+          {status === true ? (
+            <span className="text-green-500">ACTIVE</span>
+          ) : (
+            <span className="text-red-500">EXPIRED</span>
+          )}
+          Entry Fee <br /> <span className="font-bold">{cost} FTM</span>
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col items-center justify-center space-y-4">

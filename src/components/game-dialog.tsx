@@ -40,28 +40,21 @@ export function GameDialog({
     <div className="w-3/4">
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="secondary">View Game</Button>
+          <Button>View Game</Button>
         </DialogTrigger>
         <DialogContent className="flex flex-col items-center justify-center p-6 rounded-lg shadow-md bg-primary-foreground/95">
           <DialogHeader className="flex flex-col ">
             <DialogTitle className="flex items-center justify-center text-xl font-bold">
               Game #{id}
             </DialogTitle>
-            <DialogDescription className="text-sm grid grid-cols-2 items-center justify-center space-x-4">
-              <div className="flex flex-col">
-                <h2 className="text-lg font-bold">Status</h2>
-                <h1 className="text-xl font-semibold">
-                  {status === true ? (
-                    <p className="text-green-500">ACTIVE</p>
-                  ) : (
-                    <p className="text-red-500">EXPIRED</p>
-                  )}
-                </h1>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h2 className="text-lg font-bold">Total Pool </h2>
-                <h1 className="text-xl font-semibold">{prizePool} FTM</h1>
-              </div>
+            <DialogDescription className="text-sm grid grid-cols-4 items-center justify-center space-x-4">
+              <strong>Status:</strong>
+              {status === true ? (
+                <span className="text-green-500">ACTIVE</span>
+              ) : (
+                <span className="text-red-500">EXPIRED</span>
+              )}
+              <strong>Total Pool:</strong> <span>{prizePool} FTM</span>
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col items-center space-x-4">

@@ -1,3 +1,5 @@
+"use client";
+
 import GameCard from "./game-card";
 import { GameCarousal } from "./game-carousal";
 import six from "../../public/ai generated/6.png";

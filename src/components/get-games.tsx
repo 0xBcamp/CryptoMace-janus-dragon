@@ -1,3 +1,5 @@
+"use client";
+
 import { useQuery, gql } from "@apollo/client";
 import { LOAD_GAMES } from "../GraphQL/queries";
 import { useEffect, useState } from "react";

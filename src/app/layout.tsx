@@ -1,3 +1,4 @@
+"use client";
 import { Inter as FontSans } from "next/font/google";
 
 // import { Providers } from "./providers";

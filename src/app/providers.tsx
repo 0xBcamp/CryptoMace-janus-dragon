@@ -1,29 +1,17 @@
 "use client";
 
 import { rainbowkitUseMoonConnector } from "@moonup/moon-rainbowkit";
-
+// import { MoonSDK } from "@moonup/moon-sdk";
 import { AUTH, MOON_SESSION_KEY, Storage } from "@moonup/moon-types";
 import {
   RainbowKitProvider,
   connectorsForWallets,
   getDefaultWallets,
 } from "@rainbow-me/rainbowkit";
-import "@rainbow-me/rainbowkit/styles.css";
 
 import { useEffect, useState } from "react";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
-import {
-  arbitrum,
-  base,
-  fantom,
-  fantomSonicTestnet,
-  fantomTestnet,
-  goerli,
-  mainnet,
-  optimism,
-  polygon,
-  zora,
-} from "wagmi/chains";
+import { fantom, fantomSonicTestnet, fantomTestnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 function Providers({ children }: { children: React.ReactNode }) {
@@ -60,7 +48,7 @@ function Providers({ children }: { children: React.ReactNode }) {
           rainbowkitUseMoonConnector({
             chains: chains,
             options: {
-              chainId: 1,
+              chainId: 4001,
               MoonSDKConfig: {
                 Storage: {
                   key: MOON_SESSION_KEY,
@@ -75,15 +63,15 @@ function Providers({ children }: { children: React.ReactNode }) {
         ],
       },
     ]);
+    const config = createConfig({
+      autoConnect: true,
+      connectors,
+      publicClient,
+      webSocketPublicClient,
+    });
 
-    setWagmiConfig(
-      createConfig({
-        autoConnect: true,
-        connectors,
-        publicClient,
-        webSocketPublicClient,
-      })
-    );
+    setWagmiConfig(config);
+
     // setWagmiConfig(wagmiConfig);
   }, []);
 

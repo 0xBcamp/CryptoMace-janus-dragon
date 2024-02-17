@@ -1246,21 +1246,20 @@
     semver "^7.3.8"
     superstruct "^1.0.3"
 
-"@moonup/ethers@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@moonup/ethers/-/ethers-0.0.11.tgz#ecc2a750933a01d91837ac6c7cfdbbbd0cf538f7"
-  integrity sha512-ATtofmyKmKDNSWlt3WxYb/IjkMJ9VZWKgRqSx1jO6iQGZZmux5VLaV/kDvWvyUFS+34OyWs4xCeT//0H3qgtHQ==
+"@moonup/ethers@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@moonup/ethers/-/ethers-0.0.10.tgz#6e9f6519d54f13b2cb10c6696847233a92cb67c4"
+  integrity sha512-2zQf0CEgu8Xb926a11G4ANqgWBA9mh4jLsCOCv+YaQvRKlr6xTIJc44cNqvyFyMtJtalWaP15oE1/x8VJ8LmSQ==
   dependencies:
     "@ethersproject/abstract-provider" "^5.7.0"
     "@ethersproject/abstract-signer" "^5.7.0"
     "@ethersproject/bignumber" "^5.7.0"
     "@ethersproject/bytes" "^5.7.0"
-    "@ethersproject/hash" "^5.7.0"
     "@ethersproject/properties" "^5.7.0"
     "@ethersproject/providers" "^5.7.2"
     "@moonup/moon-api" "^0.0.23"
-    "@moonup/moon-sdk" "^0.0.37"
-    "@moonup/moon-types" "^0.0.22"
+    "@moonup/moon-sdk" "^0.0.36"
+    "@moonup/moon-types" "^0.0.18"
     eip1193-provider "^1.0.1"
     ethers "^5.7.2"
     events "^3.3.0"
@@ -1297,14 +1296,14 @@
   dependencies:
     "@simplewebauthn/server" "^8.3.5"
 
-"@moonup/moon-rainbowkit@0.0.26":
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/@moonup/moon-rainbowkit/-/moon-rainbowkit-0.0.26.tgz#5496d92833639bab6c6fee694c80c4b7757671b9"
-  integrity sha512-vl0yWgBfQLu6ygwGs7J5/QtXaemd4pV5w+LZzBdTqUtbKYtQuN7w6HqSChgsAejyfhbP+sIJLtamZ14X+4DgUg==
+"@moonup/moon-rainbowkit@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@moonup/moon-rainbowkit/-/moon-rainbowkit-0.0.25.tgz#463913c3b0953ecf74d4bcfb45214959fa282108"
+  integrity sha512-tnMf/XYQqnGMnG/s33XKoIhkNYjVrFAhNRq4BzHgOZ4JuQk3A2h9oJ1QHQaS8vAFlJv9quvc+3VWd9B6Carb6Q==
   dependencies:
-    "@moonup/ethers" "^0.0.11"
-    "@moonup/moon-types" "^0.0.22"
-    "@moonup/wagmi-connector" "^0.0.21"
+    "@moonup/ethers" "^0.0.10"
+    "@moonup/moon-types" "^0.0.18"
+    "@moonup/wagmi-connector" "^0.0.20"
     "@rainbow-me/rainbowkit" "^1.3.3"
     "@rainbow-me/rainbowkit-siwe-next-auth" "^0.3.4"
     "@randombits/use-siwe" "^2.0.2"
@@ -1312,22 +1311,6 @@
     siwe "^2.1.4"
     viem "^1.19.0"
     wagmi "^1.4.6"
-
-"@moonup/moon-sdk@0.0.43":
-  version "0.0.43"
-  resolved "https://registry.yarnpkg.com/@moonup/moon-sdk/-/moon-sdk-0.0.43.tgz#1e35692023824081c638832536e169dc613e6336"
-  integrity sha512-zAqO1NA3XZN0i+8Fed3ICva4y6dnayQEtpQ4SKfk4kLYsQIFZWIkQZLX69ox5ddyKkH4uODnNedX3VB6mywKhA==
-  dependencies:
-    "@ethersproject/abstract-provider" "^5.7.0"
-    "@ethersproject/abstract-signer" "^5.7.0"
-    "@ethersproject/bignumber" "^5.7.0"
-    "@ethersproject/bytes" "^5.7.0"
-    "@ethersproject/hash" "^5.7.0"
-    "@ethersproject/providers" "^5.7.2"
-    "@moonup/moon-api" "^0.0.23"
-    "@moonup/moon-types" "^0.0.25"
-    events "^3.3.0"
-    typedots "^0.0.2"
 
 "@moonup/moon-sdk@^0.0.27":
   version "0.0.27"
@@ -1345,10 +1328,10 @@
     events "^3.3.0"
     typedots "^0.0.2"
 
-"@moonup/moon-sdk@^0.0.37":
-  version "0.0.37"
-  resolved "https://registry.yarnpkg.com/@moonup/moon-sdk/-/moon-sdk-0.0.37.tgz#f479e5e89bb82698efc1b29b126e37097e277598"
-  integrity sha512-y6fIBNEYMvhv4xW9oFAZobQLK/Y0/1/1tnInq/fFhGb0fSmfBBcpwCQzDBxfCWlz8K0NW6N7OMOJaTkyJef8jw==
+"@moonup/moon-sdk@^0.0.36":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@moonup/moon-sdk/-/moon-sdk-0.0.36.tgz#0158ee1c413dfe58c31413e1c7184de23a8b41fb"
+  integrity sha512-PI0sQ/kn6iR1TL/+ElW2zK64NFK4twTsUsPvg7+z93WgMax7tNT7AbwZo/JxJQaYqhbRMEQF4WsaGQCfHMMHFw==
   dependencies:
     "@ethersproject/abstract-provider" "^5.7.0"
     "@ethersproject/abstract-signer" "^5.7.0"
@@ -1357,7 +1340,23 @@
     "@ethersproject/hash" "^5.7.0"
     "@ethersproject/providers" "^5.7.2"
     "@moonup/moon-api" "^0.0.23"
-    "@moonup/moon-types" "^0.0.22"
+    "@moonup/moon-types" "^0.0.18"
+    events "^3.3.0"
+    typedots "^0.0.2"
+
+"@moonup/moon-sdk@^0.0.43":
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/@moonup/moon-sdk/-/moon-sdk-0.0.43.tgz#1e35692023824081c638832536e169dc613e6336"
+  integrity sha512-zAqO1NA3XZN0i+8Fed3ICva4y6dnayQEtpQ4SKfk4kLYsQIFZWIkQZLX69ox5ddyKkH4uODnNedX3VB6mywKhA==
+  dependencies:
+    "@ethersproject/abstract-provider" "^5.7.0"
+    "@ethersproject/abstract-signer" "^5.7.0"
+    "@ethersproject/bignumber" "^5.7.0"
+    "@ethersproject/bytes" "^5.7.0"
+    "@ethersproject/hash" "^5.7.0"
+    "@ethersproject/providers" "^5.7.2"
+    "@moonup/moon-api" "^0.0.23"
+    "@moonup/moon-types" "^0.0.25"
     events "^3.3.0"
     typedots "^0.0.2"
 
@@ -1366,15 +1365,20 @@
   resolved "https://registry.yarnpkg.com/@moonup/moon-types/-/moon-types-0.0.16.tgz#3ebbc52843bfe5b846b0f56694bf1b4c0b0f9e1d"
   integrity sha512-AcWIwvHoRXKgXehDNQNK8Tf/NVzDupfH+WJmAwkb4I+wTJzht+pbP3By+QM7hDyqlBr/BYmX3cgocD/hINvdag==
 
-"@moonup/moon-types@^0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@moonup/moon-types/-/moon-types-0.0.22.tgz#3862c0d78dec0ad1f2ae6637023de7cf09eca86d"
-  integrity sha512-Ygxk9BVHVSGO1w193ysnxG47YEQXRLCx/hhr/J/hQTH/dgxEy7z7WmLe9BjoCgn4uoF4lwKshlb/wu/e/pbRIQ==
+"@moonup/moon-types@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@moonup/moon-types/-/moon-types-0.0.18.tgz#ecd4039cae15909bbc22dd6da48fbe14e68b9429"
+  integrity sha512-WI5hAhyhIEm2mrrTzYbucBe3vsDCdz+ic8gBeq6tRCn/lPvQ8ZmiM0uQNHgk1AfKGR6kmKih5lbX91iOEYz8cw==
 
 "@moonup/moon-types@^0.0.25":
   version "0.0.25"
   resolved "https://registry.yarnpkg.com/@moonup/moon-types/-/moon-types-0.0.25.tgz#8071e8365a4405c5460010d9828c20e2b08c258c"
   integrity sha512-YA/wtCrrr7+D/vr6XrvvV/sMkxIQzYkvCZH+fy4hHhCoU8eUY/uonNQ+hJbgP8HhDED99rEMTVDGYvqQ3abyCQ==
+
+"@moonup/moon-types@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@moonup/moon-types/-/moon-types-1.0.0.tgz#28032eaaa650075c43b0b0d3c49d01718a4d3fee"
+  integrity sha512-c8B8v2J8VBVUgmdHvIMn6YojJo/dl0Kk6lqxgruJxlNDcsGrMPYs0S7e7EFwdAwEhQRigAk+H08roHLAsJGj3g==
 
 "@moonup/wagmi-connector@^0.0.13":
   version "0.0.13"
@@ -1386,14 +1390,14 @@
     viem "^1.19.0"
     wagmi "^1.4.6"
 
-"@moonup/wagmi-connector@^0.0.21":
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/@moonup/wagmi-connector/-/wagmi-connector-0.0.21.tgz#70ce83cd17c421c81aa278ed11d5e9c3dc991932"
-  integrity sha512-fRShssaUpa4JcgidpBIK6BCiHb7CrPwtI+oIfDNLTXvVwDpUwkSXPGRZyRLYRfxMVt0JB+Cxc6oaNqlrwaZpCg==
+"@moonup/wagmi-connector@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@moonup/wagmi-connector/-/wagmi-connector-0.0.20.tgz#ba59d9aa412138e365db3235b1dc1c2803e13abd"
+  integrity sha512-0BKQ2C621CZkF5WFxgaztVfbp7r1cGGCbwmKjoUclnCUZ0j9vHTHRwU3ey0BO7xb9JbdH2W7SbK1LE8Wxo/8fA==
   dependencies:
-    "@moonup/ethers" "^0.0.11"
-    "@moonup/moon-sdk" "^0.0.37"
-    "@moonup/moon-types" "^0.0.22"
+    "@moonup/ethers" "^0.0.10"
+    "@moonup/moon-sdk" "^0.0.36"
+    "@moonup/moon-types" "^0.0.18"
     "@moonup/wagmi-connector" "^0.0.13"
     "@rainbow-me/rainbowkit" "^1.2.0"
     ethers "^5.7.2"

@@ -1,3 +1,4 @@
+
 "use client";
 
 import GameCard from "./game-card";
@@ -7,6 +8,7 @@ import { main } from "@/api/s3";
 
 const GamePage = () => {
   main();
+
   {
     return (
       <div className="flex flex-col items-center justify-start">

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+
     "@apollo/client": "^3.9.5",
     "@aws-sdk/client-s3": "^3.511.0",
     "@aws-sdk/middleware-stack": "^3.374.0",
@@ -17,15 +18,18 @@
     "@moonup/moon-rainbowkit": "^0.0.25",
     "@moonup/moon-sdk": "^0.0.43",
     "@moonup/moon-types": "^1.0.0",
+
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@rainbow-me/rainbowkit": "^1.3.3",
+
     "aws-sdk": "^2.1555.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "embla-carousel-react": "^8.0.0-rc21",
     "graphql": "^16.8.1",
+
     "next": "14.1.0",
     "pino-pretty": "^10.3.1",
     "react": "^18",

@@ -1,6 +1,13 @@
+
+
+"use client";
+
 import { Navbar } from "../components/navbar";
 import "./globals.css";
 import GamePage from "@/components/game-page";
+import bg from "../../public/newBG4.png";
+import Image from "next/image";
+
 
 export default function Home() {
   return (

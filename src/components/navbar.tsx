@@ -7,12 +7,14 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import logo from "../../public/circleLogo.png";
 import Image from "next/image";
 import RulesDialog from "./rules-dialog";
+
 import { Button } from "./ui/button";
 
-export const Navbar = () => {
-  async function callDialog() {
-    return <RulesDialog />;
   }
+
+
+
+export const Navbar = () => {
 
   return (
     <div className="fixed z-50 flex h-20 w-full items-center justify-between bg-primary border-b-2 px-4">

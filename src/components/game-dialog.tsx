@@ -1,4 +1,6 @@
+
 "use client ";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -41,13 +43,16 @@ export function GameDialog({
     <div className="w-3/4">
       <Dialog>
         <DialogTrigger asChild>
+
           <Button>View Game</Button>
+
         </DialogTrigger>
         <DialogContent className="flex flex-col items-center justify-center p-6 rounded-lg shadow-md bg-primary-foreground/95">
           <DialogHeader className="flex flex-col ">
             <DialogTitle className="flex items-center justify-center text-xl font-bold">
               Game #{id}
             </DialogTitle>
+
             <DialogDescription className="text-sm grid grid-cols-4 items-center justify-center space-x-4">
               <strong>Status:</strong>
               {status === true ? (
@@ -56,6 +61,7 @@ export function GameDialog({
                 <span className="text-red-500">EXPIRED</span>
               )}
               <strong>Total Pool:</strong> <span>{prizePool} FTM</span>
+
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col items-center space-x-4">

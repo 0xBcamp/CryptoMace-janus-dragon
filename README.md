@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Challenge
 
-## Getting Started
+Boredom is an epidemic. In order to combat boredom, we need to find some form of entertainment. Whether we are watching tv, reading a book, or participating in a hobby, we are constantly doing **_something_** so that we don't have to be doing **_nothing_**. The same can be said for the blockchain space, maybe even to a greater degree. It seems like attention spans and patience in this space are entirely too short. Markets change constantly, and so do the emotions of investors. In the fast-paced world of Web3, people need a way to slow down, relax, and have some fun with some friends, and maybe even AI.
 
-First, run the development server:
+# Solution
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+In this bootcamp, we are going to see a wide variety of different projects. Some of them will be simple, some will be complex, and many will tackle large challenges in the blockchain space. This project, though, is much simpler than that. We want to create a simple form of entertainment utilizing the Moon Platform. Leveraging Moon's AI integrations, we will design and build a **Picture Rating Game**! This game will be comprised of three main parts:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. The Smart Contracts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   - Smart contracts will need public functions that allow users to deposit tokens in order to guess the picture's rating
+   - Smart contracts will need private functions that allow the AI to submit it's rating to the contract and calculate rewards/payout winner(s)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. The Frontend
 
-## Learn More
+   - The frontend will need to dynamically display any number of active games on the homepage
+   - The frontend will need to have a 'user' page that shows all active games for that user
+   - The frontend could have a 'history' section to show all past games for the user
 
-To learn more about Next.js, take a look at the following resources:
+3. The backend
+   - The backend will need to select a picture to be rated then send that picture to the AI with a prompt that returns a number between 1-100 inclusive
+   - The backend will need to handle the rating from the AI, then submit that to the smart contract to resolve the active game
+   - The backend will need to handle multiple games running at one time
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Why it Matters
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The project here doesn't really matter all too much in the grand scheme of things, but its a fun project that is easily accomplishable by a small team in a small timeframe. It also adds a bit of fun into an otherwise serious space. The best part is its a great PoC for the Moon SDK, Moon API, and Moon AI functionality all in one app, with room for growth as Moon Data and other developer packages are released by the team.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

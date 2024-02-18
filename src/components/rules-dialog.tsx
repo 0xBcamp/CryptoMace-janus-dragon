@@ -1,10 +1,14 @@
+
 "use client";
+
 
 import {
   Dialog,
   DialogContent,
   DialogDescription,
+
   DialogFooter,
+
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -14,8 +18,10 @@ import { Button } from "@/components/ui/button"; // Ensure you have a Text compo
 const RulesDialog = () => {
   return (
     <Dialog>
+
       <DialogTrigger asChild>
         <Button>Rules</Button>
+
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -24,6 +30,7 @@ const RulesDialog = () => {
           </DialogTitle>
         </DialogHeader>
         <DialogDescription>
+
           <strong>How to Play:</strong>
         </DialogDescription>
         <ol>
@@ -103,6 +110,7 @@ const RulesDialog = () => {
           Ready to test your rating skills against R8R? Sign up, enter a game,
           and you could be our next big winner! Let the guessing begin!
         </p> */}
+
       </DialogContent>
     </Dialog>
   );

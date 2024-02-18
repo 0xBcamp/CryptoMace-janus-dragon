@@ -1,7 +1,9 @@
+
 "use client";
 
 import GameCard from "./game-card";
 import { GameCarousal } from "./game-carousal";
+
 import bg from "../../public/newR8RBG.png";
 
 const GamePage = () => {

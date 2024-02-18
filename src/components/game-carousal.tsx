@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import GameCard from "./game-card";
 
+
 import { useQuery, gql } from "@apollo/client";
 import { LOAD_GAMES } from "../GraphQL/queries";
 import { useEffect, useState } from "react";
@@ -45,6 +46,7 @@ export function GameCarousal() {
                 imageUrl={`${imgUrl}/${games[index].id}.png`}
                 width={200}
                 height={200}
+
               />
             </div>
           </CarouselItem>

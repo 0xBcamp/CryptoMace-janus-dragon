@@ -1,4 +1,5 @@
 
+
 "use client";
 import { Inter as FontSans } from "next/font/google";
 
@@ -15,6 +16,7 @@ import {
 
 import { onError } from "@apollo/client/link/error";
 import Providers from "./providers";
+
 
 
 export const fontSans = FontSans({
@@ -52,6 +54,7 @@ const apolloClient = new ApolloClient({
 });
 
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,6 +68,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+
 
         <Providers>
           <ApolloProvider client={apolloClient}>{children}</ApolloProvider>

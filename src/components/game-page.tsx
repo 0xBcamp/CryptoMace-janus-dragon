@@ -1,23 +1,16 @@
 "use client";
 
-import GameCard from "./game-card";
+import React from "react";
 import { GameCarousal } from "./game-carousal";
-import bg from "../../public/newR8RBG.png";
+import TitleText from "./title-text";
+import { motion } from "framer-motion";
 
 const GamePage = () => {
   {
     return (
       <div className="flex flex-col items-center justify-start">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${bg.src})`,
-            backgroundSize: "cover",
-            opacity: 0.2, // Control the opacity of the image here
-          }}
-        ></div>
-        <h1 className="text-2xl text-primary-foreground uppercase">
-          List of Games (TOTAL)
+        <h1 className="text-3xl text-primary tracking-widest font-bold uppercase">
+          Featured Games
         </h1>
         <GameCarousal />
       </div>

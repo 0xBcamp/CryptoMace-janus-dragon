@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
+
 import { fontFamily } from "tailwindcss/defaultTheme";
+
 
 const config = {
   darkMode: ["class"],
@@ -19,12 +21,14 @@ const config = {
       },
     },
     extend: {
+
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       backgroundImage: {
         "matrix-bg": "url('/matrixBG.png')",
       },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

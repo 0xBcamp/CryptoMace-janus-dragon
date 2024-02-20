@@ -1,3 +1,4 @@
+
 "use client";
 import { Source_Code_Pro as FontSans } from "next/font/google";
 
@@ -14,10 +15,12 @@ import {
 import { onError } from "@apollo/client/link/error";
 import Providers from "./providers";
 
+
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -40,6 +43,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     console.log(`Network error: ${networkError.message}`);
   }
 });
+
 const link = from([
   errorLink,
   new HttpLink({
@@ -47,10 +51,12 @@ const link = from([
   }),
 ]);
 
+
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: link,
 });
+
 
 export default function RootLayout({
   children,
@@ -65,9 +71,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+
         <Providers>
           <ApolloProvider client={apolloClient}>{children}</ApolloProvider>
         </Providers>
+
       </body>
     </html>
   );

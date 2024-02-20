@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+
     --background: 0 0% 0%; /* Pure Black */
     --foreground: 120 100% 25%; /* Bright Green for main text */
 
@@ -33,6 +34,7 @@
     --ring: 120 100% 25%; /* Bright Green for focus rings */
 
     --radius: 0.5rem; /* Radius for rounded corners (keep as is) */
+
   }
 
   .dark {

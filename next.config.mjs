@@ -1,3 +1,4 @@
+
 export const images = {
   remotePatterns: [
     {
@@ -6,3 +7,4 @@ export const images = {
     },
   ],
 };
+

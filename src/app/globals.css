@@ -4,35 +4,37 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --background: 0 0% 0%; /* Pure Black */
+    --foreground: 120 100% 25%; /* Bright Green for main text */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 0%; /* Pure Black for card backgrounds */
+    --card-foreground: 120 100% 25%; /* Bright Green for card text */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: 0 0% 0%; /* Pure Black for popover backgrounds */
+    --popover-foreground: 120 100% 25%; /* Bright Green for popover text */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: 120 100% 25%; /* Bright Green for primary elements */
+    --primary-foreground: 0 0% 100%; /* White for text on primary elements */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: 120 60% 40%; /* Lighter Green for secondary elements */
+    --secondary-foreground: 0 0% 100%; /* White for text on secondary elements */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 120 60% 40%; /* Lighter Green for muted text */
+    --muted-foreground: 0 0% 0%; /* Pure Black (not typically used but defined for consistency) */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 25 85% 35%; /* dark orange for accents */
+    --accent-foreground: 120 100% 25%; /* Bright Green for text on accent elements */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%; /* Adjusted to fit theme, could be a shade of red for errors */
+    --destructive-foreground: 0 0% 100%; /* White for text on destructive elements */
 
-    --radius: 0.5rem;
+    --border: 120 30% 15%; /* Dark Green for borders */
+    --input: 0 0% 0%; /* Black for input fields */
+    --ring: 120 100% 25%; /* Bright Green for focus rings */
+
+    --radius: 0.5rem; /* Radius for rounded corners (keep as is) */
+
   }
 
   .dark {

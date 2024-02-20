@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -12,23 +11,19 @@ import {
 
 import Image, { StaticImageData } from "next/image";
 
-import pic from "../../public/profile.png";
-import { Button } from "./ui/button";
-import { GameDialog } from "./game-dialog";
-import { Half2Icon } from "@radix-ui/react-icons";
-
+import SubmitRating from "./submit-rating";
+import GameEnded from "./game-ended";
+import CountdownTimer from "./countdown-timer";
 
 export interface GameCardProp {
   id: number;
   status: boolean;
   cost: number;
   prizePool: number;
-  createTimestamp: number;
+  players: number;
   expireTimestamp: number;
   nonce: number;
   imageUrl: string | StaticImageData;
-  width: number;
-  height: number;
 }
 
 const GameCard = ({
@@ -36,65 +31,78 @@ const GameCard = ({
   status,
   cost,
   prizePool,
-  createTimestamp,
+  players,
   expireTimestamp,
   nonce,
   imageUrl,
-  width,
-  height,
 }: GameCardProp) => {
+  const endDay = new Date(expireTimestamp * 1000).toLocaleDateString();
+  const date = new Date(expireTimestamp * 1000);
 
-  const endDate = new Date(expireTimestamp * 1000).toLocaleDateString();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  // Format the time; you might want to pad the minutes and seconds with leading zeros
+  const endDate = `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}`;
+
+  const newCost = (cost / 1e18).toFixed(0);
+  const newPrizePool = (prizePool / 1e18).toFixed(0);
 
   return (
-    <Card className="flex flex-col items-center justify-between bg-card/90 border-accent">
-      <CardHeader className="flex flex-col items-center justify-center bg-primary text-white w-full rounded-t-xl">
-        <CardTitle>Game #{id}</CardTitle>
-
-        <CardDescription className="grid grid-cols-4 items-center justify-center mt-4 space-x-4">
-          Status{" "}
-          {status === true ? (
-            <span className="text-green-500">ACTIVE</span>
-          ) : (
-            <span className="text-red-500">EXPIRED</span>
-          )}
-          Entry Fee <br /> <span className="font-bold">{cost} FTM</span>
-
-        </CardDescription>
+    <Card className="flex flex-col bg-card/90 border-primary border-double shadow-custom">
+      <CardHeader>
+        <div className="flex uppercase font-bold items-center justify-evenly h-2 racking-widest">
+          Game ID: #{id}
+        </div>
       </CardHeader>
-      <CardContent className="flex flex-col items-center justify-center space-y-4">
-        <Image
-          src={imageUrl}
-          alt="image"
-          width={width}
-          height={height}
-          className="rounded-lg mt-4"
-        />
-        <div className="flex items-center">
-          <GameDialog
-            id={id}
-            status={status}
-            cost={cost}
-            prizePool={prizePool}
-            createTimestamp={createTimestamp}
-            expireTimestamp={expireTimestamp}
-            nonce={nonce}
-            imageUrl={imageUrl}
+      <CardContent>
+        <div>
+          <Image
+            src={imageUrl}
+            alt="image"
+            width={500}
+            height={500}
+            className="rounded-lg w-full h-auto"
           />
         </div>
+        <div className=" px-3">
+          <div className="flex justify-between text-lg my-1 pt-2 font-semibold">
+            Status:
+            {status === true ? (
+              <span className="text-green-500">Active</span>
+            ) : (
+              <span className="text-red-500">Expired</span>
+            )}
+          </div>
+          <div className="flex justify-between text-lg mb-1">
+            <span className="font-semibold">Cost:</span>
+            <span className="text-accent">{newCost} FTM</span>
+          </div>
+          <div className="flex flex-row justify-between text-lg mb-1">
+            <span className="font-semibold">Prize Pool:</span>
+            <span className="text-accent">{newPrizePool} FTM</span>
+          </div>
+          <div className="flex justify-between text-lg mb-1">
+            <span className="font-semibold">Players:</span>
+            <span className="text-accent"> {players}</span>{" "}
+          </div>
+
+          {status === true && (
+            <div className="flex justify-between text-lg mb-2 font-semibold">
+              Expires: <CountdownTimer expireTimestamp={expireTimestamp} />
+            </div>
+          )}
+        </div>
+        <div className="flex items-center justify-center">
+          {status === true ? (
+            <SubmitRating gameId={id} />
+          ) : (
+            <GameEnded gameId={id} />
+          )}
+        </div>
       </CardContent>
-      <CardFooter className="grid grid-cols-2 p-6 bg-primary text-white rounded-b-xl w-full">
-        <div className="flex flex-col items-center justify-center border-r-1">
-          <h3 className="text-md font-bold">Total Pool </h3>
-          <h2 className="text-xl font-semibold">{prizePool} FTM</h2>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <h3 className="text-md font-bold">Game Ends</h3>
-
-          <h2 className="text-xl font-semibold">{endDate}</h2>
-
-        </div>
-      </CardFooter>
     </Card>
   );
 };

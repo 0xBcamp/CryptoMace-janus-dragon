@@ -5,6 +5,9 @@ export const LOAD_GAMES = gql`
   query {
     games {
       items {
+
+        aiRating
+
         id
         status
         prizePool

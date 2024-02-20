@@ -1,49 +1,23 @@
 "use client";
 
-import Link from "next/link";
-
-import "../../node_modules/@rainbow-me/rainbowkit/dist/index.css";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import logo from "../../public/circleLogo.png";
-import Image from "next/image";
 import RulesDialog from "./rules-dialog";
-
-import { Button } from "./ui/button";
-
-  }
-
-
+import Sidebar from "./sidebar";
+import logo from "../../public/R8RLogo.png";
+import Image from "next/image";
+import FaucetDialog from "./faucet-dialog";
 
 export const Navbar = () => {
-
   return (
-    <div className="fixed z-50 flex h-20 w-full items-center justify-between bg-primary border-b-2 px-4">
-      <div className="flex items-center">
-        <Link href="/">
-          <div className="pl-4">
-            <Image src={logo} alt="" width={80} height={80} />
-          </div>
-        </Link>
+    <div className="flex h-20 w-full items-center justify-between bg-transparent px-20">
+      <div className="flex justify-start flex-1">
+        <FaucetDialog />
       </div>
-      <div className="flex ml-12">
+      <div className="flex items-center justify-center flex-1">
+        <Image src={logo} alt="logo" width={140} height={50} />
+      </div>
+      <div className="flex justify-end items-center flex-1 space-x-3">
         <RulesDialog />
-      </div>
-
-      <div className="flex items-center gap-x-3">
-        <ConnectButton
-          accountStatus={{
-            smallScreen: "avatar",
-            largeScreen: "avatar",
-          }}
-          showBalance={{
-            smallScreen: false,
-            largeScreen: false,
-          }}
-          chainStatus={{
-            smallScreen: "icon",
-            largeScreen: "icon",
-          }}
-        />
+        <Sidebar />
       </div>
     </div>
   );

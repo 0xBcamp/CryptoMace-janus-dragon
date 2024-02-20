@@ -1,3 +1,4 @@
+
 # Challenge
 
 Boredom is an epidemic. In order to combat boredom, we need to find some form of entertainment. Whether we are watching tv, reading a book, or participating in a hobby, we are constantly doing **_something_** so that we don't have to be doing **_nothing_**. The same can be said for the blockchain space, maybe even to a greater degree. It seems like attention spans and patience in this space are entirely too short. Markets change constantly, and so do the emotions of investors. In the fast-paced world of Web3, people need a way to slow down, relax, and have some fun with some friends, and maybe even AI.
@@ -25,5 +26,6 @@ In this bootcamp, we are going to see a wide variety of different projects. Some
 # Why it Matters
 
 The project here doesn't really matter all too much in the grand scheme of things, but its a fun project that is easily accomplishable by a small team in a small timeframe. It also adds a bit of fun into an otherwise serious space. The best part is its a great PoC for the Moon SDK, Moon API, and Moon AI functionality all in one app, with room for growth as Moon Data and other developer packages are released by the team.
+
 
 

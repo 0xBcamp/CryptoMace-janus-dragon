@@ -1,9 +1,6 @@
 "use client";
 
-
-
 import { rainbowkitUseMoonConnector } from "@moonup/moon-rainbowkit";
-// import { MoonSDK } from "@moonup/moon-sdk";
 import { AUTH, MOON_SESSION_KEY, Storage } from "@moonup/moon-types";
 import {
   RainbowKitProvider,
@@ -37,8 +34,8 @@ function Providers({ children }: { children: React.ReactNode }) {
     setChains(chains);
 
     const { wallets } = getDefaultWallets({
-      appName: "RainbowKit App",
-      projectId: "YOUR_PROJECT_ID",
+      appName: "R8R Frontend",
+      projectId: "55b2c816bb3b5664940f20724cdde304",
       chains,
     });
 
@@ -50,7 +47,7 @@ function Providers({ children }: { children: React.ReactNode }) {
           rainbowkitUseMoonConnector({
             chains: chains,
             options: {
-              chainId: 4001,
+              chainId: 4002,
               MoonSDKConfig: {
                 Storage: {
                   key: MOON_SESSION_KEY,
@@ -65,14 +62,16 @@ function Providers({ children }: { children: React.ReactNode }) {
         ],
       },
     ]);
-    const config = createConfig({
-      autoConnect: true,
-      connectors,
-      publicClient,
-      webSocketPublicClient,
-    });
+    // const config = ;
 
-    setWagmiConfig(config);
+    setWagmiConfig(
+      createConfig({
+        autoConnect: true,
+        connectors,
+        publicClient,
+        webSocketPublicClient,
+      })
+    );
 
     // setWagmiConfig(wagmiConfig);
   }, []);
@@ -89,6 +88,3 @@ function Providers({ children }: { children: React.ReactNode }) {
 }
 
 export default Providers;
-
-
-

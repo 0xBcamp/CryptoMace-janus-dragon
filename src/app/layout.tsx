@@ -1,9 +1,7 @@
 
-
 "use client";
-import { Inter as FontSans } from "next/font/google";
+import { Source_Code_Pro as FontSans } from "next/font/google";
 
-// import { Providers } from "./providers";
 import { cn } from "@/lib/utils";
 
 import {
@@ -16,7 +14,6 @@ import {
 
 import { onError } from "@apollo/client/link/error";
 import Providers from "./providers";
-
 
 
 export const fontSans = FontSans({
@@ -46,13 +43,19 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     console.log(`Network error: ${networkError.message}`);
   }
 });
-const link = from([errorLink, new HttpLink({ uri: "localhost:3003" })]);
+
+const link = from([
+  errorLink,
+  new HttpLink({
+    uri: "https://macepapa-backend-jd-final-production.up.railway.app/",
+  }),
+]);
+
 
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: link,
 });
-
 
 
 export default function RootLayout({
@@ -68,7 +71,6 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-
 
         <Providers>
           <ApolloProvider client={apolloClient}>{children}</ApolloProvider>

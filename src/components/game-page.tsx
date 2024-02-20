@@ -1,25 +1,33 @@
-
 "use client";
 
-import GameCard from "./game-card";
+import React from "react";
 import { GameCarousal } from "./game-carousal";
-
-import bg from "../../public/newR8RBG.png";
+import SignupPage from "./moon/moon-wallet-connect";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const GamePage = () => {
   {
     return (
       <div className="flex flex-col items-center justify-start">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${bg.src})`,
-            backgroundSize: "cover",
-            opacity: 0.2, // Control the opacity of the image here
-          }}
-        ></div>
-        <h1 className="text-2xl text-primary-foreground uppercase">
-          List of Games (TOTAL)
+        {/* <SignupPage /> */}
+        <div className="flex items-center justify-center gap-x-3 p-8">
+          <ConnectButton
+            accountStatus={{
+              smallScreen: "avatar",
+              largeScreen: "address",
+            }}
+            showBalance={{
+              smallScreen: false,
+              largeScreen: true,
+            }}
+            chainStatus={{
+              smallScreen: "icon",
+              largeScreen: "icon",
+            }}
+          />
+        </div>
+        <h1 className="text-3xl text-primary tracking-widest font-bold uppercase">
+          Featured Games
         </h1>
         <GameCarousal />
       </div>

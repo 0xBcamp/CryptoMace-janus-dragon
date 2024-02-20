@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-// Define a type for the props
 interface CountdownTimerProps {
   expireTimestamp: number; // UNIX timestamp in seconds
 }
 
-// Define a type for the time left object
 interface TimeLeft {
   days: number;
   hours: number;
@@ -48,6 +46,13 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ expireTimestamp }) => {
 
   const timerComponents: JSX.Element[] = [];
 
+  const timeLabels: { [key: string]: string } = {
+    days: "d",
+    hours: "hr",
+    minutes: "m",
+    seconds: "s",
+  };
+
   Object.keys(timeLeft).forEach((interval) => {
     if (!timeLeft[interval as keyof TimeLeft]) {
       return;
@@ -55,7 +60,8 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ expireTimestamp }) => {
 
     timerComponents.push(
       <span key={interval}>
-        {timeLeft[interval as keyof TimeLeft]} {interval}{" "}
+        {timeLeft[interval as keyof TimeLeft]}
+        {timeLabels[interval]}{" "}
       </span>
     );
   });

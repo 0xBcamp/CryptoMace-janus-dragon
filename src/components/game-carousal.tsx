@@ -28,7 +28,7 @@ export function GameCarousal() {
   if (loading) return <div>Loading</div>;
 
   return (
-    <Carousel className="w-1/4 lg:w-1/3 mx-auto">
+    <Carousel className="w-1/4 lg:w-10/12  mx-auto">
       <CarouselContent className="-ml-1">
         {Array.from({ length: games.length }).map((_, index) => (
           <CarouselItem key={index} className="pl-1 lg:basis-1/3">

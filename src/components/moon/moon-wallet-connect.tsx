@@ -1,19 +1,13 @@
-import React, { useState } from "react";
+import { EmailLoginInput, EmailSignupInput } from "@moonup/moon-api";
+import { useState } from "react";
 import { useMoonSDK } from "../../app/usemoonsdk";
-import {
-  EmailLoginInput,
-  EmailSignupInput,
-  EmailSignupResponse,
-} from "@moonup/moon-api"; // Ensure this path is correct
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 
-const SignUpPage: React.FC = () => {
+const SignupPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [signupSuccess, setSignupSuccess] = useState(true);
+  const [signupSuccess, setSignupSuccess] = useState(false);
   const [signInSuccess, setSignInSuccess] = useState(false);
   const [authenticatedAddress, setAuthenticatedAddress] = useState("");
   const [isConnected, setIsConnected] = useState(false);
@@ -42,18 +36,20 @@ const SignUpPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
+      // Initialize and connect to Moon
+      console.log("Initializing and connecting to Moon...");
       await initialize();
       await connect();
-      console.log("Connected to Moon");
-
+      console.log("Connected to Moon!");
       setIsConnected(true);
     } catch (error) {
-      console.error("Error connecting to Moon", error);
-      setError("Error connecting to Moon");
+      console.error("Error during connection:", error);
+      setError("Error connecting to Moon. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+
   const handleSignup = async () => {
     try {
       setLoading(true);
@@ -145,23 +141,28 @@ const SignUpPage: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-96">
+    <div className="flex justify-center items-center h-screen">
       {!isConnected && (
         <div>
-          <Button variant="default" onClick={handleInitializeAndConnect}>
-            {loading ? "Connecting..." : "Connect to Moon Wallet"}
-          </Button>
+          <h2 className="text-2xl font-bold mb-4 text-center"></h2>
+          <button
+            type="button"
+            className="bg-green-400 text-black p-2 rounded"
+            onClick={handleInitializeAndConnect}
+          >
+            {loading ? "Connecting..." : "Initialize & Connect to Moon"}
+          </button>
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
       )}
 
       {isConnected && !signupSuccess && !signInSuccess && (
-        <form className="bg-primary shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
           <div className="mb-4">
             <h2 className="text-2xl font-bold mb-4 text-center">
               Sign up for a Moon Account
             </h2>
-            <Input
+            <input
               type="email"
               placeholder="Email"
               className="w-full border p-2 rounded mb-2"
@@ -170,7 +171,7 @@ const SignUpPage: React.FC = () => {
             />
           </div>
           <div className="mb-4">
-            <Input
+            <input
               type="password"
               placeholder="Password"
               className="w-full border p-2 rounded mb-2"
@@ -179,7 +180,7 @@ const SignUpPage: React.FC = () => {
             />
           </div>
           <div className="mb-4">
-            <Input
+            <input
               type="password"
               placeholder="Confirm Password"
               className={`w-full border p-2 rounded mb-2 ${
@@ -193,42 +194,50 @@ const SignUpPage: React.FC = () => {
             )}
           </div>
           <div className="flex justify-center">
-            <Button variant="default" onClick={handleSignup}>
+            <button
+              type="button"
+              className="bg-blue-500 text-white p-2 rounded"
+              onClick={handleSignup}
+            >
               {loading ? "Signing up..." : "Sign up for a Moon Account"}
-            </Button>
+            </button>
             {error && <p className="text-red-500 ml-2">{error}</p>}
           </div>
         </form>
       )}
 
       {signupSuccess && !signInSuccess && isConnected && (
-        <div className="mb-4 text-center text-primary">
+        <div className="mb-4 text-center">
           <p>Congratulations! Your Moon account is created.</p>
-          <p>Created an account to sign in.</p>
-          <form className="bg-black  shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
+          <p>Now that you have created an account, sign in.</p>
+          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
             <div className="mb-4">
               <h2 className="text-2xl font-bold mb-4 text-center">Sign In</h2>
-              <Input
+              <input
                 type="email"
                 placeholder="Email"
-                className="w-full border-primary text-primary p-2 rounded mb-2"
+                className="w-full border p-2 rounded mb-2"
                 value={email}
                 onChange={handleEmailChange}
               />
             </div>
             <div className="mb-4">
-              <Input
+              <input
                 type="password"
                 placeholder="Password"
-                className="w-full border-primary text-primary p-2 rounded mb-2"
+                className="w-full border p-2 rounded mb-2"
                 value={password}
                 onChange={handlePasswordChange}
               />
             </div>
             <div className="flex justify-center">
-              <Button variant="default" onClick={handleSignIn}>
+              <button
+                type="button"
+                className="bg-blue-500 text-white p-2 rounded"
+                onClick={handleSignIn}
+              >
                 {loading ? "Signing in..." : "Sign In"}
-              </Button>
+              </button>
               {error && <p className="text-red-500 ml-2">{error}</p>}
             </div>
           </form>
@@ -236,16 +245,15 @@ const SignUpPage: React.FC = () => {
       )}
 
       {signInSuccess && isConnected && (
-        <div className="mt-4 text-center bg-primary-foreground rounded-full flex flex-row items-center justify-between">
-          <p>{authenticatedAddress}</p>
-          <Button
+        <div className="mt-4 text-center">
+          <p>Authenticated Address: {authenticatedAddress}</p>
+          <button
             type="button"
-            variant="secondary"
             className="bg-red-500 text-white p-2 rounded mt-2"
             onClick={handleDisconnect}
           >
-            {loading ? "Disconnecting..." : "Disconnect"}
-          </Button>
+            {loading ? "Disconnecting..." : "Disconnect from Moon"}
+          </button>
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </div>
       )}
@@ -253,4 +261,4 @@ const SignUpPage: React.FC = () => {
   );
 };
 
-export default SignUpPage;
+export default SignupPage;

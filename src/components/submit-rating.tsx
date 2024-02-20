@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useAccount, useContractWrite } from "wagmi";
 
 import { Button } from "./ui/button";
@@ -7,19 +7,26 @@ import { R8RAbi } from "@/abi/r8rabi";
 import { parseEther } from "viem";
 import { useQuery } from "@apollo/client";
 import { LOAD_GAMES } from "@/GraphQL/queries";
+import { useMoonSDK } from "@/app/usemoonsdk";
 
 const SubmitRating = ({ gameId }: { gameId: number }) => {
   const { address } = useAccount();
-  const { data } = useQuery(LOAD_GAMES);
 
+  const { data } = useQuery(LOAD_GAMES);
+  const [userRating, setUserRating] = useState<number>(0);
+
+  const playerRating = data?.games?.items
+    .map((game: { gamePlayer: { items: any[] } }) =>
+      game.gamePlayer.items.find(
+        (player: { playerId: string | undefined }) =>
+          player.playerId === address
+      )
+    )
+    .find((gamePlayer: any) => gamePlayer !== undefined)?.playerRating;
   const game = data?.games?.items?.find((game: any) => game.id === gameId);
   const hasEntered = game?.gamePlayer?.items?.some(
     (player: any) => player.playerId === address
   );
-
-  console.log(address);
-  const [userRating, setUserRating] = useState("");
-
   const cost = 1;
 
   const {
@@ -29,28 +36,38 @@ const SubmitRating = ({ gameId }: { gameId: number }) => {
     isSuccess,
     write,
   } = useContractWrite({
-    address: "0x4e2dd804E4f7CCEbaDa82531d52D8F998541c997", // Replace with your contract's address
+    address: "0xa3F00Bc558A0Ef68a5Ee5Ffda924e7Ed95613328",
     abi: R8RAbi,
-    functionName: "joinGame", // Replace 'mint' with your contract's relevant function
+    functionName: "joinGame",
     account: address,
   });
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setUserRating(e.target.value);
     // Validate userRating before submission if necessary
     write({
       args: [
-        "0xad29abb318791d579433d831ed122afeaf29dcfe", // This assumes your form has an input for the token address
+        "0x0000000000000000000000000000000000000000",
         BigInt(cost), // Convert to BigInt for token amount
         BigInt(gameId),
-        BigInt(50),
+        BigInt(userRating),
       ],
-      // from: address,
       value: parseEther("1"),
     });
   };
   if (hasEntered) {
-    return <div>You have already entered this game</div>;
+    return (
+      <div className="text-2xl mt-1 p-2 flex flex-col items-center justify-between space-y-3">
+        <p className="text-green-500">GAME ENTERED</p>
+        <p className="text-2xl font-semibold text-accent">
+          Your Rating:{" "}
+          <span className="text-3xl font-bold text-green-500">
+            {playerRating}
+          </span>
+        </p>
+      </div>
+    );
   } else {
     return (
       <form
@@ -59,12 +76,12 @@ const SubmitRating = ({ gameId }: { gameId: number }) => {
       >
         <div className="text-xl mt-1 p-2 flex items-center justify-between">
           SUBMIT RATING:
-          <Input
+          <input
             type="number"
             name="userRating"
-            onChange={(e) => setUserRating(e.target.value)}
+            onChange={(e) => setUserRating(+e.target.value)}
             // onSubmit={(e) => setUserRating(e.target.value)}
-            className="border-primary w-20 h-12 pt-2 text-xl"
+            className="w-20 h-12 pt-2 text-xl bg-black border-primary border-2 rounded-xl"
           />
         </div>
         <Button
@@ -78,7 +95,7 @@ const SubmitRating = ({ gameId }: { gameId: number }) => {
         {hash && <div>Transaction Hash</div>}
         {isLoading && <div>Waiting for confirmation...</div>}
         {isSuccess && <div>Transaction confirmed.</div>}
-        {error && <div>Error: {error.message}</div>}
+        {error && <div>Error</div>}
       </form>
     );
   }

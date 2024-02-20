@@ -48,6 +48,7 @@ const GameCard = ({
     .padStart(2, "0")}`;
 
   const newCost = (cost / 1e18).toFixed(0);
+  const newPrizePool = (prizePool / 1e18).toFixed(0);
 
   return (
     <Card className="flex flex-col bg-card/90 border-primary border-double shadow-custom">
@@ -81,7 +82,7 @@ const GameCard = ({
           </div>
           <div className="flex flex-row justify-between text-lg mb-1">
             <span className="font-semibold">Prize Pool:</span>
-            <span className="text-accent">{prizePool} FTM</span>
+            <span className="text-accent">{newPrizePool} FTM</span>
           </div>
           <div className="flex justify-between text-lg mb-1">
             <span className="font-semibold">Players:</span>

@@ -34,8 +34,8 @@ function Providers({ children }: { children: React.ReactNode }) {
     setChains(chains);
 
     const { wallets } = getDefaultWallets({
-      appName: "RainbowKit App",
-      projectId: "YOUR_PROJECT_ID",
+      appName: "R8R Frontend",
+      projectId: "55b2c816bb3b5664940f20724cdde304",
       chains,
     });
 

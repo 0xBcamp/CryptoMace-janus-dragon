@@ -51,6 +51,15 @@ export const useMoonSDK = () => {
     }
   };
 
+  const getAccounts = async () => {
+    if (moon) {
+      return moon.listAccounts();
+    }
+  };
+
+  // const signTranasction = async (transaction) => {
+  //   if (moon) return moon.SignTransaction(transaction);
+  // };
   return {
     moon,
     initialize,
@@ -58,5 +67,6 @@ export const useMoonSDK = () => {
     updateToken,
     createAccount,
     disconnect,
+    getAccounts,
   };
 };

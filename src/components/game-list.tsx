@@ -43,9 +43,9 @@ const GameList = () => {
       <table className="text-primary">
         <thead>
           <tr>
-            <th>Game ID</th>
-            <th>Prize Pool</th>
-            <th>Players</th>
+            <th>Game ID | </th>
+            <th>Prize | </th>
+            <th>Players | </th>
             <th>Status</th>
           </tr>
         </thead>
@@ -61,7 +61,7 @@ const GameList = () => {
                 style={{ background: playerJoined ? "#90ee90" : "none" }}
               >
                 <td>{game.id}</td>
-                <td>{game.prizePool}</td>
+                <td>{(game.prizePool / 1e18).toFixed(0)}</td>
                 <td>{game.gamePlayer.length}</td>
                 <td>{game.status ? "Active" : "Inactive"}</td>
               </tr>
